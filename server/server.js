@@ -13,18 +13,41 @@ var result = [];
 app.post('/addition', function(req, res){
     console.log(req.body);
     console.log(req.body.firstNumber);
-    var firstNumber = req.body.firstNumber;
-    var secondNumber = req.body.secondNumber;
+    var firstNumber = parseFloat(req.body.firstNumber);
+    var secondNumber = parseFloat(req.body.secondNumber);
     var operator = req.body.operator;
 
     function addItUpServer(){
         newNumber = (firstNumber + secondNumber);
+        result = [];
+       result.push(newNumber);
+    }
+        addItUpServer();
+    
+    
+    res.send(result);
+    
+});
+
+app.post('/subtraction', function (req, res) {
+    console.log(req.body);
+    console.log(req.body.firstNumber);
+    var firstNumber = parseFloat(req.body.firstNumber);
+    var secondNumber = parseFloat(req.body.secondNumber);
+    var operator = req.body.operator;
+
+    function subtractItDownServer() {
+        newNumber = (firstNumber - secondNumber);
+        result = [];
         result.push(newNumber);
     }
-    
-    
-    res.sendStatus(201);
-    
+
+    subtractItDownServer();
+    console.log(result);
+
+
+    res.send(result);
+
 });
 
 
