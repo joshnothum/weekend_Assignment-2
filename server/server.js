@@ -11,103 +11,123 @@ app.use(bodyParser.urlencoded({ extended: true }));
 var historicalResults =[];
 var result = [];
 
-app.post('/addition', function(req, res){
-    console.log(req.body);
-    console.log(req.body.firstNumber);
-    var firstNumber = parseFloat(req.body.firstNumber);
-    var secondNumber = parseFloat(req.body.secondNumber);
-    var operator = req.body.operator;
+// app.post('/addition', function(req, res){
+//     console.log(req.body);
+//     console.log(req.body.firstNumber);
+//     var firstNumber = parseFloat(req.body.firstNumber);
+//     var secondNumber = parseFloat(req.body.secondNumber);
+//     var operator = req.body.operator;
 
-    function addItUpServer(){
-        newNumber = (firstNumber + secondNumber);
-        result = [];
-        result.push(newNumber);
-        historicalResults.push(newNumber, operator);
-    }
-        addItUpServer();
+//     function addItUpServer(){
+//         newNumber = (firstNumber + secondNumber);
+//         result = [];
+//         result.push(newNumber);
+//         historicalResults.push(newNumber, operator);
+//     }
+//         addItUpServer();
     
     
-    res.send(result);
+//     res.send(result);
     
-});
+// });
 
-app.post('/subtraction', function (req, res) {
-    console.log(req.body);
-    console.log(req.body.firstNumber);
-    var firstNumber = parseFloat(req.body.firstNumber);
-    var secondNumber = parseFloat(req.body.secondNumber);
-    var operator = req.body.operator;
+// app.post('/subtraction', function (req, res) {
+//     console.log(req.body);
+//     console.log(req.body.firstNumber);
+//     var firstNumber = parseFloat(req.body.firstNumber);
+//     var secondNumber = parseFloat(req.body.secondNumber);
+//     var operator = req.body.operator;
 
-    function subtractItDownServer() {
-        newNumber = (firstNumber - secondNumber);
-        result = [];
-        result.push(newNumber);
-        historicalResults.push(newNumber);
-    }
+//     function subtractItDownServer() {
+//         newNumber = (firstNumber - secondNumber);
+//         result = [];
+//         result.push(newNumber);
+//         historicalResults.push(newNumber);
+//     }
 
-    subtractItDownServer();
-    console.log(result);
-
-
-    res.send(result);
-
-});
-
-app.post('/division', function (req, res) {
-    console.log(req.body);
-    console.log(req.body.firstNumber);
-    var firstNumber = parseFloat(req.body.firstNumber);
-    var secondNumber = parseFloat(req.body.secondNumber);
-    var operator = req.body.operator;
-
-    function divideItServer() {
-        newNumber = (firstNumber / secondNumber);
-        result = [];
-        result.push(newNumber);
-        historicalResults.push(newNumber);
-    }
-
-    divideItServer();
-    console.log(result);
+//     subtractItDownServer();
+//     console.log(result);
 
 
-    res.send(result);
+//     res.send(result);
 
-});
+// });
 
-app.post('/multiplication', function (req, res) {
-    console.log(req.body);
-    console.log(req.body.firstNumber);
-    var firstNumber = parseFloat(req.body.firstNumber);
-    var secondNumber = parseFloat(req.body.secondNumber);
-    var operator = req.body.operator;
+// app.post('/division', function (req, res) {
+//     console.log(req.body);
+//     console.log(req.body.firstNumber);
+//     var firstNumber = parseFloat(req.body.firstNumber);
+//     var secondNumber = parseFloat(req.body.secondNumber);
+//     var operator = req.body.operator;
 
-    function multiplyItServer() {
-        newNumber = (firstNumber * secondNumber);
-        result = [];
-        result.push(newNumber);
-        historicalResults.push(newNumber);
-    }
+//     function divideItServer() {
+//         newNumber = (firstNumber / secondNumber);
+//         result = [];
+//         result.push(newNumber);
+//         historicalResults.push(newNumber);
+//     }
 
-    multiplyItServer();
-    console.log(result);
+//     divideItServer();
+//     console.log(result);
 
 
-    res.send(result);
+//     res.send(result);
 
-});
+// });
 
-app.post('/eval', function(){
+// app.post('/multiplication', function (req, res) {
+//     console.log(req.body);
+//     console.log(req.body.firstNumber);
+//     var firstNumber = parseFloat(req.body.firstNumber);
+//     var secondNumber = parseFloat(req.body.secondNumber);
+//     var operator = req.body.operator;
+
+//     function multiplyItServer() {
+//         newNumber = (firstNumber * secondNumber);
+//         result = [];
+//         result.push(newNumber);
+//         historicalResults.push(newNumber);
+//     }
+
+//     multiplyItServer();
+//     console.log(result);
+
+
+//     res.send(result);
+
+// });
+
+app.post('/eval', function(req, res){
 
     var firstNumber = parseFloat(req.body.firstNumber);
     var secondNumber = parseFloat(req.body.secondNumber);
     var operator = req.body.operator;
     var result=[];
+    var newNumber;
+    switch(operator){
+        case 'add':
+        newNumber = firstNumber + secondNumber;
+        break;
 
-    if(operator === "add"){
-        result = firstNumber + secondNumber;
+        case 'subtract':
+        newNumber = firstNumber - secondNumber;
+        break;
+
+        case 'multiply':
+        newNumber = firstNumber * secondNumber;
+        break;
+
+        case 'divide':
+        newNumber = firstNumber / secondNumber;
     }
-    }
+
+    console.log(newNumber);
+    
+    result.push(newNumber);
+
+    res.send(result);
+
+
 });
 
 
