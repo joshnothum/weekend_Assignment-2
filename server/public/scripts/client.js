@@ -14,6 +14,7 @@ function clickHandler() {
     $('#division').on('click', divideIt);
     $('#multiplication').on('click', multiplyIt);
     $('#clear').on('click', clearIt);
+    $('.test').on('click', typeChanger);
     //$('.number').on('click', checker );
 }
 
@@ -22,7 +23,7 @@ var type = "test";
 console.log(type);
 
 function typeChanger() {
-    type = $(this).data.type.val();
+    type = $(this).data().type;
     console.log(type);
 }
 
@@ -140,4 +141,23 @@ function checker() {
     console.log($(this).val());
 
     
-};
+}
+
+function calculate() {
+
+    firstNumber = $('#firstNumber').val();
+    secondNumber = $('#secondNumber').val();
+    operator = type;
+    var calcData = {firstNumber, secondNumber, operator};
+    $.ajax({
+        method: "POST",
+        url: '/eval',
+        data: calcData
+    }).done(function (response) {
+        console.log(response);
+        $('#answers').append(response[0]);
+
+    }).fail(function (message) {
+        console.log('fail');
+    });
+}

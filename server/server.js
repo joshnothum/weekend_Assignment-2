@@ -97,6 +97,20 @@ app.post('/multiplication', function (req, res) {
 
 });
 
+app.post('/eval', function(){
+
+    var firstNumber = parseFloat(req.body.firstNumber);
+    var secondNumber = parseFloat(req.body.secondNumber);
+    var operator = req.body.operator;
+    var result=[];
+
+    if(operator === "add"){
+        result = firstNumber + secondNumber;
+    }
+    }
+});
+
+
 
 app.listen(port, function () {
     console.log('listening on port:', port);
