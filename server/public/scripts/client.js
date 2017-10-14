@@ -71,7 +71,7 @@ function divideIt() {
     event.preventDefault();
     firstNumber = $('#firstNumber').val();
     secondNumber = $('#secondNumber').val();
-    var operator = 'subtract';
+    var operator = 'divide';
     console.log(firstNumber, secondNumber, operator);
     var divideData = {firstNumber,secondNumber,operator};
     console.log(divideData);
@@ -80,7 +80,7 @@ function divideIt() {
 
     $.ajax({
         method: "POST",
-        url: '/subtraction',
+        url: '/division',
         data: divideData
     }).done(function (response) {
         console.log(response);
@@ -97,17 +97,17 @@ function multiplyIt() {
     event.preventDefault();
     firstNumber = $('#firstNumber').val();
     secondNumber = $('#secondNumber').val();
-    var operator = 'subtract';
+    var operator = 'multiply';
     console.log(firstNumber, secondNumber, operator);
-    var multiplyIt = {firstNumber,secondNumber,operator};
-    console.log(multiplyIt);
+    var multiplyData = {firstNumber,secondNumber,operator};
+    console.log(multiplyData);
     $('#firstNumber').val('');
     $('#secondNumber').val('');
 
     $.ajax({
         method: "POST",
-        url: '/subtraction',
-        data: mukltiplyData
+        url: '/multiplication',
+        data: multiplyData
     }).done(function (response) {
         console.log(response);
         $('#answers').append(response[0]);

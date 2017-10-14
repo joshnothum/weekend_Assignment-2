@@ -8,6 +8,7 @@ app.use(express.static('server/public'));
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 
+var historicalResults =[];
 var result = [];
 
 app.post('/addition', function(req, res){
@@ -20,7 +21,8 @@ app.post('/addition', function(req, res){
     function addItUpServer(){
         newNumber = (firstNumber + secondNumber);
         result = [];
-       result.push(newNumber);
+        result.push(newNumber);
+        historicalResults.push(newNumber);
     }
         addItUpServer();
     
@@ -40,9 +42,54 @@ app.post('/subtraction', function (req, res) {
         newNumber = (firstNumber - secondNumber);
         result = [];
         result.push(newNumber);
+        historicalResults.push(newNumber);
     }
 
     subtractItDownServer();
+    console.log(result);
+
+
+    res.send(result);
+
+});
+
+app.post('/division', function (req, res) {
+    console.log(req.body);
+    console.log(req.body.firstNumber);
+    var firstNumber = parseFloat(req.body.firstNumber);
+    var secondNumber = parseFloat(req.body.secondNumber);
+    var operator = req.body.operator;
+
+    function divideItServer() {
+        newNumber = (firstNumber / secondNumber);
+        result = [];
+        result.push(newNumber);
+        historicalResults.push(newNumber);
+    }
+
+    divideItServer();
+    console.log(result);
+
+
+    res.send(result);
+
+});
+
+app.post('/multiplication', function (req, res) {
+    console.log(req.body);
+    console.log(req.body.firstNumber);
+    var firstNumber = parseFloat(req.body.firstNumber);
+    var secondNumber = parseFloat(req.body.secondNumber);
+    var operator = req.body.operator;
+
+    function multiplyItServer() {
+        newNumber = (firstNumber * secondNumber);
+        result = [];
+        result.push(newNumber);
+        historicalResults.push(newNumber);
+    }
+
+    multiplyItServer();
     console.log(result);
 
 
