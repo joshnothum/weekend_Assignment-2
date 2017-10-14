@@ -14,6 +14,7 @@ function clickHandler() {
     $('#division').on('click', divideIt);
     $('#multiplication').on('click', multiplyIt);
     $('#clear').on('click', clearIt);
+    $('.number').on('click', checker );
 }
 function addItUp() {
      event.preventDefault();
@@ -122,3 +123,8 @@ function multiplyIt() {
 function clearIt() {
     location.reload();
 }
+function checker() {
+    event.preventDefault();
+    console.log($(this).val());
+    
+};
