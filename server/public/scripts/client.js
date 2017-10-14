@@ -11,6 +11,8 @@ function weReady() {
 function clickHandler() {
     $('#addition').on('click', addItUp);
     $('#subtraction').on('click', subtractItDown);
+    $('#division').on('click', divideIt);
+    $('#multiplication').on('click', multiplyIt);
 }
 function addItUp() {
      event.preventDefault();
@@ -62,5 +64,55 @@ function addItUp() {
 
 
      });
-     
- }
+}
+
+
+function divideIt() {
+    event.preventDefault();
+    firstNumber = $('#firstNumber').val();
+    secondNumber = $('#secondNumber').val();
+    var operator = 'subtract';
+    console.log(firstNumber, secondNumber, operator);
+    var divideData = {firstNumber,secondNumber,operator};
+    console.log(divideData);
+    $('#firstNumber').val('');
+    $('#secondNumber').val('');
+
+    $.ajax({
+        method: "POST",
+        url: '/subtraction',
+        data: divideData
+    }).done(function (response) {
+        console.log(response);
+        $('#answers').append(response[0]);
+
+    }).fail(function (message) {
+        console.log('fail');
+
+
+    });
+}
+
+function multiplyIt() {
+    event.preventDefault();
+    firstNumber = $('#firstNumber').val();
+    secondNumber = $('#secondNumber').val();
+    var operator = 'subtract';
+    console.log(firstNumber, secondNumber, operator);
+    var multiplyIt = {firstNumber,secondNumber,operator};
+    console.log(multiplyIt);
+    $('#firstNumber').val('');
+    $('#secondNumber').val('');
+
+    $.ajax({
+        method: "POST",
+        url: '/subtraction',
+        data: mukltiplyData
+    }).done(function (response) {
+        console.log(response);
+        $('#answers').append(response[0]);
+
+    }).fail(function (message) {
+        console.log('fail');
+    });
+}
