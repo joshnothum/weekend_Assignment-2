@@ -22,7 +22,7 @@ app.post('/addition', function(req, res){
         newNumber = (firstNumber + secondNumber);
         result = [];
         result.push(newNumber);
-        historicalResults.push(newNumber);
+        historicalResults.push(newNumber, operator);
     }
         addItUpServer();
     

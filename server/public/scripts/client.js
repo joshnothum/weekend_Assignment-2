@@ -14,8 +14,20 @@ function clickHandler() {
     $('#division').on('click', divideIt);
     $('#multiplication').on('click', multiplyIt);
     $('#clear').on('click', clearIt);
-    $('.number').on('click', checker );
+    //$('.number').on('click', checker );
 }
+
+var type = "test";
+
+console.log(type);
+
+function typeChanger() {
+    type = $(this).data.type.val();
+    console.log(type);
+}
+
+console.log(type);
+
 function addItUp() {
      event.preventDefault();
      firstNumber = $('#firstNumber').val();
@@ -126,5 +138,6 @@ function clearIt() {
 function checker() {
     event.preventDefault();
     console.log($(this).val());
+
     
 };
