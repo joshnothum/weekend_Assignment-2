@@ -13,6 +13,7 @@ function clickHandler() {
     $('#subtraction').on('click', subtractItDown);
     $('#division').on('click', divideIt);
     $('#multiplication').on('click', multiplyIt);
+    $('#clear').on('click', clearIt);
 }
 function addItUp() {
      event.preventDefault();
@@ -115,4 +116,9 @@ function multiplyIt() {
     }).fail(function (message) {
         console.log('fail');
     });
+
+}
+
+function clearIt() {
+    location.reload();
 }
