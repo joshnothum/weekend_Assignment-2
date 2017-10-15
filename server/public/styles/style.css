@@ -13,22 +13,9 @@ html {
 
 }
 
-/* .keys span{
-    float: left;
-    position: relative;
-    top: 0;
-    cursor: pointer;
-    width: 66px;
-    height: 36px;
-    background: white;
-    border-radius: 3px;
-    box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
-    margin: 0 7px 11px 0;
-    color: #888;
-    line-height: 36px;
+#screen{
+    width: 325px;
+    height: 100px;
     text-align: center;
-    /* prevent selection of text inside keys */
-    user-select: none;
-    /* Smoothing out hover and active states using css3 transitions */
-    transition: all 0.2s ease;
-} */
+    background-color: yellowgreen;
+}

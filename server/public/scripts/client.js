@@ -157,6 +157,7 @@ function calculate() {
 
     firstNumber = $('#firstNumber').val();
     secondNumber = $('#secondNumber').val();
+    
 
     var operator = type;
     var calcData = {firstNumber, secondNumber, operator};
