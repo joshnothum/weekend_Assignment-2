@@ -18,8 +18,9 @@ function clickHandler() {
     // $('.test').on('click', typeChanger);
     $('.test').on('click',calculate );
     //$('.number').on('click', checker );
-    $(":button").on('click', styleForCaclulator);
-    $(".math").on('click', getOperator)
+    $(".number").on('click', styleForCaclulator);
+    $(".math").on('click', getOperator);
+    $('#evaluate').on('click', getData);
 }
 
 var type = "test";
@@ -180,30 +181,73 @@ function calculate() {
     firstNumber = $('#firstNumber').val('');
     secondNumber = $('#secondNumber').val('');
 }
-
+var numero=[];
+var evaluator =[];
+var calculate= [];
 function styleForCaclulator() {
-    var nintendo = $(this).val();
-    $('#visible').append(nintendo);
+    
+    var nintendo = ($(this).val());
+    $('.visible').append(nintendo);
+    numero.push(nintendo);
+
+    console.log(nintendo);
+    
     
 }
 
-var newOperatorArray = [];
 function getOperator() {
+    numero = numero.join('');
+    parseInt(numero);
+    var sega = $(this).val();
+    $('.visible').append('<br>'+ sega + '<br>');
+    parseInt(sega);
+    calculate.push(numero);
+    calculate.push(sega);
+    console.log(numero);
+    numero =[];
+    console.log(calculate);
     
-var newOperator = $(this).val();
-parseInt(newOperator);
-newOperatorArray.push(newOperator);
-console.log(newOperatorArray);
 
     
 }
 
-function getNumbers() {
+function getData() {
+    numero = numero.join('');
+    parseInt(numero);
+    calculate.push(numero);
+    console.log(calculate);
+    numero=[];
+    var firstNumber = calculate[0];
+    var secondNumber= calculate[2];
+    var operator = calculate[1];
 
-    var sendForCalc = $('#visible').val();
+    
+    var newData = {firstNumber, secondNumber, operator};
 
-    parseInt(sendForCalc);
+    console.log(newData);
+    
 
-    console.log(sendForCalc);
+    $.ajax({
+        method: "POST",
+        url: '/newCalculator',
+        data: newData
+    }).done(function(response){
+    console.log(response);
+    $('#doesItWork').append('Is this your stupid answer?','<br>' + response +'</br>');
+    
+    }).fail(function(message){
+        console.log('Stimpy! You Idiot!');
+        
+    });
+    
 }
+
+// function getNumbers() {
+
+//     var sendForCalc = $('#visible').val();
+
+//     parseInt(sendForCalc);
+
+//     console.log(sendForCalc);
+// }
 

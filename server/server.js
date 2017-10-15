@@ -131,6 +131,35 @@ app.post('/eval', function(req, res){
 
 });
 
+app.post('/newCalculator', function (req, res) {
+    var firstNumber = parseFloat(req.body.firstNumber);
+    var secondNumber = parseFloat(req.body.secondNumber);
+    var operator = req.body.operator;
+    var result = [];
+    var newNumber;
+    switch (operator) {
+        case '+':
+            newNumber = firstNumber + secondNumber;
+            break;
+
+        case '-':
+            newNumber = firstNumber - secondNumber;
+            break;
+
+        case '*':
+            newNumber = firstNumber * secondNumber;
+            break;
+
+        case '÷':
+            newNumber = firstNumber / secondNumber;
+    }
+    result.push(newNumber);
+    historicalResults.push(newNumber);
+
+    res.send(result);
+    
+});
+
 
 
 app.listen(port, function () {

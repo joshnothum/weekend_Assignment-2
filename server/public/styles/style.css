@@ -9,19 +9,27 @@ html {
     max-width: 325px;
     height: auto;
     background-color: #88AEB2;
+    align-content: center;
     font: bold 14px Arial, sans-serif;
 
 }
 
 #screen{
     width: 325px;
-    height: 75px;
+    min-height: 100px;
+    height: auto;
     text-align: center;
     background-color: yellowgreen;
+    float: left;
 }
 
-#visible{
-    max-width: 300;
+#calcKeys{
+    width:325;
+    height:auto;
+}
+
+span{
+    max-width: 150;
     height: auto;
     float: left;
     margin: 10px;
@@ -38,5 +46,18 @@ html {
     height:75px;
     margin:5px;
 }
+#evaluate{
 
-input[type=button]
+    width:70px;
+    height:75px;
+    margin:5px;
+}
+
+#doesItWork{
+    max-width: 150px;
+    height: auto;
+    float: right;
+
+
+
+}

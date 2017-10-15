@@ -21,7 +21,6 @@
                 <button class="test" id="multiplication" data-type="multiply">Multiplication</button>
                 <br>
                 <br>
-                <button id="evaluate">Evaluate</button>
                 <br>
                 <button id="clear">Clear</button>
                 <br>
@@ -30,12 +29,14 @@
         <div id="answers">
 
         </div>
-        <div id="screen">
-            <span id="visible"></span>
-        </div>
     <div id="calculator">
+        <div id="screen">
+            <span class="visible"></span>
+            <div id="doesItWork">
+            </div>
+        </div>
         <div class="keys">
-            <form id"calcKeys">
+            <form id="calcKeys">
             <input type ="button" class="number" value=7>
             <input type ="button" class="number" value=8>
             <input type= "button" class="number" value=9>
@@ -50,7 +51,7 @@
             <input type ="button" class="math" value=*>
             <input type ="button" class="number" value=".">
             <input type ="button" class="number" value=0>
-            <input type ="button" class="number" id="evaluate" value= "=">
+            <input type ="button" id="evaluate" value= "=">
             <input type= "button" class="math" value=+>
             </form>     
         </div>  
