@@ -124,6 +124,7 @@ app.post('/eval', function(req, res){
     console.log(newNumber);
     
     result.push(newNumber);
+    historicalResults.push(newNumber);
 
     res.send(result);
 

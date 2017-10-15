@@ -15,7 +15,28 @@ html {
 
 #screen{
     width: 325px;
-    height: 100px;
+    height: 75px;
     text-align: center;
     background-color: yellowgreen;
 }
+
+#visible{
+    max-width: 300;
+    height: auto;
+    float: left;
+    margin: 10px;
+}
+.number{
+    width:70px;
+    height:75px;
+    margin:5px;
+    
+}
+.math{
+
+    width:60px;
+    height:75px;
+    margin:5px;
+}
+
+input[type=button]

@@ -18,6 +18,8 @@ function clickHandler() {
     // $('.test').on('click', typeChanger);
     $('.test').on('click',calculate );
     //$('.number').on('click', checker );
+    $(":button").on('click', styleForCaclulator);
+    $(".math").on('click', getOperator)
 }
 
 var type = "test";
@@ -151,7 +153,7 @@ function clearIt() {
 
 function calculate() {
     event.preventDefault();
-    type = "test";
+    
     type = $(this).data().type;
     console.log(type);
 
@@ -174,4 +176,34 @@ function calculate() {
     }).fail(function (message) {
         console.log('fail');
     });
+
+    firstNumber = $('#firstNumber').val('');
+    secondNumber = $('#secondNumber').val('');
 }
+
+function styleForCaclulator() {
+    var nintendo = $(this).val();
+    $('#visible').append(nintendo);
+    
+}
+
+var newOperatorArray = [];
+function getOperator() {
+    
+var newOperator = $(this).val();
+parseInt(newOperator);
+newOperatorArray.push(newOperator);
+console.log(newOperatorArray);
+
+    
+}
+
+function getNumbers() {
+
+    var sendForCalc = $('#visible').val();
+
+    parseInt(sendForCalc);
+
+    console.log(sendForCalc);
+}
+
