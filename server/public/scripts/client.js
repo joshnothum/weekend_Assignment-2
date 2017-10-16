@@ -4,7 +4,7 @@ console.log('We Ready');
 $(document).ready(weReady);
 
 function weReady() {
-    displayHistory();
+    // displayHistory();
     console.log('js sourced');
     clickHandler();
 }
@@ -17,7 +17,7 @@ function clickHandler() {
     // $('#multiplication').on('click', multiplyIt);
     $('#clear').on('click', clearIt);
     // $('.test').on('click', typeChanger);
-    $('.test').on('click', calculator );
+    // $('.test').on('click', calculator );
     //$('.number').on('click', checker );
     $(".number").on('click', styleForCaclulator);
     $(".math").on('click', getOperator);
@@ -254,7 +254,7 @@ function getData() {
         console.log('Stimpy! You Idiot!');
         
     });
-    displayHistory();
+    // displayHistory();
 }
 
 function displayHistory() {

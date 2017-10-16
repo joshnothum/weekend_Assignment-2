@@ -1,16 +1,13 @@
 var express = require('express');
 var app = express();
 var port = 5000;
-
+var calcRouter = require('./routes/newCalculator_router.js');
 
 app.use(express.static('server/public'));
 
 var bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
-
-var historicalResults =[];
-var result = [];
-
+app.use('/newCalculator', calcRouter);
 // app.post('/addition', function(req, res){
 //     console.log(req.body);
 //     console.log(req.body.firstNumber);
@@ -132,35 +129,7 @@ app.post('/eval', function(req, res){
 
 });
 
-app.post('/newCalculator', function (req, res) {
-    var firstNumber = parseFloat(req.body.firstNumber);
-    var secondNumber = parseFloat(req.body.secondNumber);
-    var operator = req.body.operator;
-    var result = [];
-    var newNumber;
-    switch (operator) {
-        case '+':
-            newNumber = firstNumber + secondNumber;
-            break;
 
-        case '-':
-            newNumber = firstNumber - secondNumber;
-            break;
-
-        case '*':
-            newNumber = firstNumber * secondNumber;
-            break;
-
-        case '÷':
-            newNumber = firstNumber / secondNumber;
-    }
-    result.push(newNumber); 
-    req.body.newNumber = newNumber;
-    historicalResults.push(req.body);
-
-    res.send(result);
-    
-});
 
 app.get('/history', function(req, res){
     res.send(historicalResults);
