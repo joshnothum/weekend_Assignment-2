@@ -124,8 +124,8 @@ app.post('/eval', function(req, res){
     console.log(newNumber);
     
     result.push(newNumber);
-    newNumber = {newNumber};
-    historicalResults.push(req.body,newNumber);
+    req.body.newNumber = newNumber;
+    historicalResults.push(req.body);
 
     res.send(result);
 
@@ -154,8 +154,9 @@ app.post('/newCalculator', function (req, res) {
         case '÷':
             newNumber = firstNumber / secondNumber;
     }
-    result.push(newNumber);
-    historicalResults.push(firstNumber,operator, secondNumber,'=', newNumber);
+    result.push(newNumber); 
+    req.body.newNumber = newNumber;
+    historicalResults.push(req.body);
 
     res.send(result);
     

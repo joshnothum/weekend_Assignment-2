@@ -181,6 +181,7 @@ function calculator() {
     //resetting input fields to blank
     firstNumber = $('#firstNumber').val('');
     secondNumber = $('#secondNumber').val('');
+    displayHistory();
 }
 
 //declaring empty arrays to store data.
@@ -238,7 +239,6 @@ function getData() {
     var newData = {firstNumber, secondNumber, operator};
 
     console.log(newData);
-    
 
     $.ajax({
         method: "POST",
@@ -254,20 +254,28 @@ function getData() {
         console.log('Stimpy! You Idiot!');
         
     });
-    
+    displayHistory();
 }
 
 function displayHistory() {
+    $('#history').empty();
     $.ajax({
         method: "GET",
         url: '/history'
     }).done(function(response){
+        var firstNumberArray=[];
+        var secondNumberArray=[];
+        var operatorArray=[];
+        var newNumberArray=[];
         console.log(response);
         for(var i = 0;i<response.length; i++){
-        $('#history').append(response[i]);
-    };
-        $('#history').append('<br>');
-        
+            $('#history').append('<p>' + response[i].firstNumber + "  " + response[i].operator + "  " + response[i].secondNumber + " = " + response[i].newNumber+'</p>');
+    }
+        console.log(firstNumberArray);
+        console.log(operatorArray);
+        console.log(secondNumberArray);
+        console.log(newNumberArray);
+
         console.log(response);
     }).fail(function(message){
         console.log('fail');
