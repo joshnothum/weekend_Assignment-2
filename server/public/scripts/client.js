@@ -16,7 +16,7 @@ function clickHandler() {
     // $('#multiplication').on('click', multiplyIt);
     $('#clear').on('click', clearIt);
     // $('.test').on('click', typeChanger);
-    $('.test').on('click',calculate );
+    $('.test').on('click', calculator );
     //$('.number').on('click', checker );
     $(".number").on('click', styleForCaclulator);
     $(".math").on('click', getOperator);
@@ -37,6 +37,8 @@ console.log(type);
 // }
 
 console.log(type);
+
+/* Originally had a dedicated function for each math operation.  They are below:
 
 // function addItUp() {
 //      event.preventDefault();
@@ -140,29 +142,27 @@ console.log(type);
 //         console.log('fail');
 //     });
 
-// }
+// }*/
 
 function clearIt() {
     location.reload();
 }
-// function checker() {
-//     event.preventDefault();
-//     console.log($(this).val());
 
+function calculator() {
+    event.preventDefault();//to prevent defualt reset of form
     
-// }
-
-function calculate() {
-    event.preventDefault();
-    
+    //setting my variables to put into array
     type = $(this).data().type;
-    console.log(type);
+    console.log(type);//testing to see how type is logged
 
     firstNumber = $('#firstNumber').val();
     secondNumber = $('#secondNumber').val();
     
-
+    //switching type variable to operator for consistency;
+    //I may have been able to change data-operator
     var operator = type;
+
+    //putting variables into an object to send to server.
     var calcData = {firstNumber, secondNumber, operator};
     console.log(calcData);
     
@@ -172,39 +172,46 @@ function calculate() {
         data: calcData
     }).done(function (response) {
         console.log(response);
-        $('#answers').append(response[0]);
+        $('#answers').append('<br>'+response[0]+'</br>');
 
     }).fail(function (message) {
         console.log('fail');
     });
-
+    //resetting input fields to blank
     firstNumber = $('#firstNumber').val('');
     secondNumber = $('#secondNumber').val('');
 }
+
+//declaring empty arrays to store data.
 var numero=[];
 var evaluator =[];
 var calculate= [];
+
 function styleForCaclulator() {
     
     var nintendo = ($(this).val());
     $('.visible').append(nintendo);
+    //appending each click to DOM
+    //pushing each nintendo into numero for storage
     numero.push(nintendo);
 
     console.log(nintendo);
-    
-    
 }
 
 function getOperator() {
+    //getOperator runs after an operator is clicked. .math class buttons
+    //joining all individual numbers into string
     numero = numero.join('');
+    //changing string into number. 
     parseInt(numero);
+    //sega is my operator
     var sega = $(this).val();
     $('.visible').append('<br>'+ sega + '<br>');
-    parseInt(sega);
-    calculate.push(numero);
-    calculate.push(sega);
+    parseInt(sega); //not sure if sega needs a parseInt
+    calculate.push(numero);//pushing numero, now a number into calculate array
+    calculate.push(sega);//pushing operator into array
     console.log(numero);
-    numero =[];
+    numero =[];//empyting numero
     console.log(calculate);
     
 
@@ -212,11 +219,16 @@ function getOperator() {
 }
 
 function getData() {
+    //getData runs after the = sign is clicked
+    //joing the numero and a parseInt again
     numero = numero.join('');
     parseInt(numero);
+    //pushing numero, which is now the second number
     calculate.push(numero);
     console.log(calculate);
     numero=[];
+
+    //declaring variables from position in calculate array
     var firstNumber = calculate[0];
     var secondNumber= calculate[2];
     var operator = calculate[1];
@@ -233,7 +245,8 @@ function getData() {
         data: newData
     }).done(function(response){
     console.log(response);
-    $('#doesItWork').append('Is this your stupid answer?','<br>' + response +'</br>');
+    $('#doesItWork').append('This is your stupid answer:','<br>' + response +'</br>');
+    $('.visible').empty();
     
     }).fail(function(message){
         console.log('Stimpy! You Idiot!');

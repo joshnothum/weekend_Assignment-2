@@ -5,6 +5,12 @@ html {
     background-size: cover;
 }
 
+#answers{
+    max-width: 325px;
+    height:100px;
+    background-color: white;
+}
+
 #calculator {
     max-width: 325px;
     height: auto;
@@ -57,7 +63,4 @@ span{
     max-width: 150px;
     height: auto;
     float: right;
-
-
-
 }
