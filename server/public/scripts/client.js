@@ -4,6 +4,7 @@ console.log('We Ready');
 $(document).ready(weReady);
 
 function weReady() {
+    displayHistory();
     console.log('js sourced');
     clickHandler();
 }
@@ -188,7 +189,6 @@ var evaluator =[];
 var calculate= [];
 
 function styleForCaclulator() {
-    
     var nintendo = ($(this).val());
     $('.visible').append(nintendo);
     //appending each click to DOM
@@ -221,6 +221,7 @@ function getOperator() {
 function getData() {
     //getData runs after the = sign is clicked
     //joing the numero and a parseInt again
+    $('#doesItWork').empty();
     numero = numero.join('');
     parseInt(numero);
     //pushing numero, which is now the second number
@@ -247,9 +248,29 @@ function getData() {
     console.log(response);
     $('#doesItWork').append('This is your stupid answer:','<br>' + response +'</br>');
     $('.visible').empty();
+    calculate=[];
     
     }).fail(function(message){
         console.log('Stimpy! You Idiot!');
+        
+    });
+    
+}
+
+function displayHistory() {
+    $.ajax({
+        method: "GET",
+        url: '/history'
+    }).done(function(response){
+        console.log(response);
+        for(var i = 0;i<response.length; i++){
+        $('#history').append(response[i]);
+    };
+        $('#history').append('<br>');
+        
+        console.log(response);
+    }).fail(function(message){
+        console.log('fail');
         
     });
     

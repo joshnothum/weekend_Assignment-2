@@ -124,7 +124,8 @@ app.post('/eval', function(req, res){
     console.log(newNumber);
     
     result.push(newNumber);
-    historicalResults.push(newNumber);
+    newNumber = {newNumber};
+    historicalResults.push(req.body,newNumber);
 
     res.send(result);
 
@@ -154,10 +155,14 @@ app.post('/newCalculator', function (req, res) {
             newNumber = firstNumber / secondNumber;
     }
     result.push(newNumber);
-    historicalResults.push(newNumber);
+    historicalResults.push(firstNumber,operator, secondNumber,'=', newNumber);
 
     res.send(result);
     
+});
+
+app.get('/history', function(req, res){
+    res.send(historicalResults);
 });
 
 

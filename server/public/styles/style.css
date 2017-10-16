@@ -5,28 +5,63 @@ html {
     background-size: cover;
 }
 
+#container{
+    max-width: 1000px;
+    height: auto;
+    margin: 0% auto;
+}
+
+#header{
+    max-width: 275px;
+    height: auto;
+    float: left;
+    background-color: blue;
+}
+
+#form{
+    max-width:325px;
+    height: 300px;
+    float: left;
+    background-color: green;
+    border: dotted;
+}
+#weekend{
+    border:solid;
+    max-width: 325;
+    float:top;
+    margin: 15px;
+}
+
 #answers{
-    max-width: 325px;
-    height:100px;
-    background-color: white;
+    max-width: 100px;
+    height:auto;
+    float: bottom;
+    margin: 15px;
 }
 
 #calculator {
-    max-width: 325px;
+    width: 325px;
+    margin: 10px;
     height: auto;
+    float: right;
     background-color: #88AEB2;
-    align-content: center;
     font: bold 14px Arial, sans-serif;
+    border: solid;
 
 }
 
 #screen{
     width: 325px;
-    min-height: 100px;
-    height: auto;
-    text-align: center;
+    min-height: 30px;
     background-color: yellowgreen;
     float: left;
+    margin:0% auto;
+}
+#doesItWork {
+    max-width: 150px;
+    min-height:75px;
+    padding:10px;
+    float: right;
 }
 
 #calcKeys{
@@ -34,7 +69,7 @@ html {
     height:auto;
 }
 
-span{
+.visible{
     max-width: 150;
     height: auto;
     float: left;
@@ -58,9 +93,9 @@ span{
     height:75px;
     margin:5px;
 }
-
-#doesItWork{
-    max-width: 150px;
+#history{
+    float: left;
+    max-width: 100px;
     height: auto;
-    float: right;
+    border: dotted;
 }
