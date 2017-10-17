@@ -246,7 +246,7 @@ function getData() {
         data: newData
     }).done(function(response){
     console.log(response);
-    $('#doesItWork').append('This is your stupid answer:','<br>' + response +'</br>');
+    $('#doesItWork').append('This is your answer:','<br>' + response +'</br>');
     $('.visible').empty();
     calculate=[];
     
