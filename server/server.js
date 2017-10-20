@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var port = 5000;
+var port = process.env.PORT || 5000;
 var calcRouter = require('./routes/newCalculator_router.js');
 
 app.use(express.static('server/public'));
